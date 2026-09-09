@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">सदिच्छा कला केंद्र - गणपती बुकिंग</string>
+    <string name="title_activity_main">सदिच्छा कला केंद्र - गणपती बुकिंग</string>
+    <string name="package_name">com.sadichha.ganpatibooking</string>
+    <string name="custom_url_scheme">com.sadichha.ganpatibooking</string>
+</resources>

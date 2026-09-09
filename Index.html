@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>सदिच्छा कला केंद्र - गणपती बाप्पा बुकिंग सिस्टीम</title>
+  
+  <!-- Google Fonts: Noto Sans Devanagari & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #d35400;
+      --primary-dark: #a04000;
+      --primary-light: #fdf2e9;
+      --secondary: #6c3483;
+      --secondary-dark: #4a235a;
+      --accent: #f39c12;
+      --gold: #f4d03f;
+      --success: #27ae60;
+      --success-dark: #1e8449;
+      --danger: #c0392b;
+      --danger-dark: #922b21;
+      --info: #2980b9;
+      --dark: #2c3e50;
+      --light: #fefcf9;
+      --card-bg: #ffffff;
+      --border: #f5cba7;
+      --shadow: 0 8px 25px rgba(211, 84, 0, 0.12);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: linear-gradient(180deg, #fdfbf7 0%, #f7f0e3 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ================= HEADER STYLING ================= */
+    .top-bar {
+      background: var(--secondary-dark);
+      color: #f9e79f;
+      padding: 8px 14px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .top-bar .divine-motto {
+      letter-spacing: 0.8px;
+    }
+
+    header.main-header {
+      background: linear-gradient(135deg, #b93c00 0%, #6c3483 100%);
+      color: white;
+      padding: 20px 14px 16px 14px;
+      box-shadow: 0 4px 20px rgba(108, 52, 131, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.main-header::before {
+      content: '🌺';
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      font-size: 110px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+    }
+
+    .header-badge {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(10px);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fcf3cf;
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .shop-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    }
+
+    .shop-subtitle {
+      font-size: 13px;
+      color: #fef9e7;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .shop-location {
+      font-size: 11.5px;
+      color: #d35400;
+      background: #ffffff;
+      padding: 4px 12px;
+      border-radius: 15px;
+      margin-top: 4px;
+      font-weight: 800;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* ================= MOBILE OPTIMIZED QUICK STATS BAR ================= */
+    .quick-stats {
+      max-width: 1000px;
+      margin: -12px auto 16px auto;
+      padding: 0 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0; /* Prevents overflow */
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .stat-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .stat-info h4 {
+      font-size: 11px;
+      color: #7f8c8d;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .stat-info .stat-value {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* MOBILE BREAKPOINT FOR QUICK STATS & LAYOUT */
+    @media (max-width: 600px) {
+      .quick-stats {
+        grid-template-columns: 1fr 1fr;
+        margin-top: 8px;
+        gap: 8px;
+      }
+      .quick-stats .stat-card:nth-child(3) {
+        grid-column: span 2; /* 3rd card "उर्वरित बाकी" takes full row on mobile */
+      }
+      .stat-card {
+        padding: 10px;
+        gap: 8px;
+      }
+      .stat-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+      }
+      .stat-info h4 {
+        font-size: 10.5px;
+      }
+      .stat-info .stat-value {
+        font-size: 16px;
+      }
+      .shop-title {
+        font-size: 22px;
+      }
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+    .main-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 14px 30px 14px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Mobile-First Tabs Navigation */
+    .tabs-nav {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+      background: white;
+      padding: 5px;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border: 1px solid #f2d7d5;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .tabs-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 120px;
+      background: transparent;
+      border: none;
+      color: var(--dark);
+      padding: 11px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      touch-action: manipulation;
+      min-height: 46px;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .tab-btn:active {
+      transform: scale(0.96);
+      background: #fadbd8;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(211, 84, 0, 0.35);
+    }
+
+    /* Tab Content Cards */
+    .tab-content {
+      display: none;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      animation: tabFadeIn 0.25s ease;
+    }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #fad7a0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Form Fields - Mobile Responsive Grid */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 650px) {
+      .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 13px;
+      color: #34495e;
+    }
+
+    label .req {
+      color: var(--danger);
+    }
+
+    input, select, textarea {
+      padding: 12px 14px;
+      border: 1.5px solid #d5dbdb;
+      border-radius: 10px;
+      font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+      outline: none;
+      transition: all 0.2s ease;
+      background: #fafafa;
+      width: 100%;
+      min-height: 48px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 3.5px rgba(211, 84, 0, 0.15);
+    }
+
+    /* Calculation Display Box */
+    .calc-box {
+      background: linear-gradient(135deg, #fef9e7 0%, #fcf3cf 100%);
+      border: 2px dashed var(--accent);
+      padding: 12px 16px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .calc-amount {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--danger);
+    }
+
+    /* Radio Card Selectors */
+    .radio-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .radio-card {
+      flex: 1;
+      min-width: 90px;
+      border: 2px solid #e5e8e8;
+      padding: 10px 6px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13.5px;
+      background: white;
+      transition: all 0.2s ease;
+      user-select: none;
+      touch-action: manipulation;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .radio-card input {
+      display: none;
+    }
+
+    .radio-card:hover {
+      border-color: var(--accent);
+      background: #fef9e7;
+    }
+
+    .radio-card:active {
+      transform: scale(0.96);
+    }
+
+    .radio-card:has(input:checked) {
+      border-color: var(--primary);
+      background: #fdf2e9;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(211, 84, 0, 0.18);
+    }
+
+    /* Photo Upload Box */
+    .photo-upload-container {
+      border: 2px dashed #bdc3c7;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      background: #fdfdfd;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .photo-upload-container:hover {
+      border-color: var(--primary);
+      background: #fef9f5;
+    }
+
+    .photo-upload-container:active {
+      transform: scale(0.98);
+    }
+
+    .photo-preview-img {
+      max-height: 120px;
+      border-radius: 8px;
+      margin-top: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    /* Action Buttons with Interactive Touch Feedback */
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 15.5px;
+      font-weight: 800;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 14px;
+      box-shadow: 0 4px 15px rgba(211, 84, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      touch-action: manipulation;
+      min-height: 48px;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+      box-shadow: 0 6px 20px rgba(211, 84, 0, 0.45);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.97);
+      background: var(--primary-dark);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-submit:disabled {
+      background: #bdc3c7;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Alert Banner */
+    .alert-box {
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      display: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .alert-success {
+      background: #d4efdf;
+      color: #145a32;
+      border: 1.5px solid #a9dfbf;
+    }
+
+    .alert-error {
+      background: #fadbd8;
+      color: #78281f;
+      border: 1.5px solid #f5b7b1;
+    }
+
+    /* PDF Action Links */
+    .pdf-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .pdf-link-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 800;
+      font-size: 14.5px;
+      color: white;
+      background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.35);
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .pdf-link-btn:hover {
+      background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    }
+
+    .pdf-link-btn:active {
+      transform: scale(0.97);
+    }
+
+    .wa-share-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 800;
+      font-size: 14.5px;
+      color: white;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .wa-share-btn:hover {
+      background: linear-gradient(135deg, #20ba5a 0%, #0e7065 100%);
+    }
+
+    .wa-share-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Search Bar Input Container */
+    .search-input-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 500px) {
+      .search-input-box {
+        flex-direction: row;
+      }
+    }
+
+    /* ================= FILTERS CONTROL PANEL ================= */
+    .filter-panel {
+      background: linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%);
+      border: 1.5px solid var(--border);
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+    }
+
+    .filter-header {
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-reset-filter {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .btn-reset-filter:hover {
+      background: #c0392b;
+    }
+
+    .btn-reset-filter:active {
+      transform: scale(0.95);
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 550px) {
+      .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 800px) {
+      .filter-grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      }
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-group label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #5d6d7e;
+    }
+
+    .filter-group input, .filter-group select {
+      padding: 8px 10px;
+      font-size: 14px;
+      min-height: 42px;
+      border-radius: 8px;
+    }
+
+    /* Table Styling */
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid #eaeaea;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 11px 12px;
+      text-align: left;
+      border-bottom: 1px solid #f2f4f4;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #fdf2e9;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    tr:hover {
+      background: #fcf8f5;
+    }
+
+    .badge {
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      display: inline-block;
+    }
+
+    .badge-booked { background: #fef9e7; color: #b7950b; border: 1px solid #f9e79f; }
+    .badge-paid { background: #d4efdf; color: #1e8449; border: 1px solid #a9dfbf; }
+    .badge-cancelled { background: #fadbd8; color: #922b21; border: 1px solid #f5b7b1; }
+
+    /* ================= FOOTER STYLING ================= */
+    footer.main-footer {
+      background: #2c1638;
+      color: #f8f9fa;
+      margin-top: auto;
+    }
+
+    .footer-top {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 26px 14px 18px 14px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-col h3 {
+      color: #f9e79f;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col p {
+      font-size: 12.5px;
+      color: #d5dbdb;
+      line-height: 1.5;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 13px;
+    }
+
+    .contact-list li {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ea5b0c;
+      font-weight: 700;
+    }
+
+    /* Developer Attribution Section */
+    .developer-bar {
+      background: #1a0b22;
+      padding: 12px 14px;
+      text-align: center;
+      font-size: 12.5px;
+      color: #abb2b9;
+      font-weight: 500;
+    }
+
+    .developer-bar strong {
+      color: #f39c12;
+      font-weight: 700;
+    }
+
+    .developer-names {
+      color: #ffffff;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Divine Bar -->
+  <div class="top-bar">
+    <span class="divine-motto">🌺 ॥ श्री गणेशाय नमः ॥ 🌺</span>
+    <span><i class="fa-solid fa-location-dot"></i> स्टॉल क्रमांक १०, नाशिक</span>
+  </div>
+
+  <!-- Main Web App Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <span class="header-badge">✨ अधिकृत बुकिंग व बिलिंग पोर्टल ✨</span>
+      <h1 class="shop-title">सदिच्छा कला केंद्र</h1>
+      <p class="shop-subtitle">❁ आमच्या येथे पेण येथील सुबक आणि आकर्षक, शाडू मातीच्या गणेश मूर्ती मिळतील ❁</p>
+      <div class="shop-location">
+        सदिच्छा कला केंद्र, स्टॉल क्रमांक १०, उदाजी महाराज म्युझियम ऑफ एज्युकेशन हेरिटेज, आकाशवाणी टॉवर जवळ, गंगापूर रोड, नाशिक
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Optimized Quick Stats Bar -->
+  <div class="quick-stats">
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#e67e22;"><i class="fa-solid fa-gopuram"></i></div>
+      <div class="stat-info">
+        <h4>एकूण बुकिंग</h4>
+        <div class="stat-value" id="statTotalBookings">0</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#27ae60;"><i class="fa-solid fa-circle-check"></i></div>
+      <div class="stat-info">
+        <h4>पूर्ण जमा (PAID)</h4>
+        <div class="stat-value" id="statPaidCount">0</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#c0392b;"><i class="fa-solid fa-clock-rotate-left"></i></div>
+      <div class="stat-info">
+        <h4>उर्वरित बाकी</h4>
+        <div class="stat-value" id="statPendingBalance">₹ 0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Interactive Content Wrapper -->
+  <main class="main-wrapper">
+    
+    <!-- Notification Alert Banner -->
+    <div id="alertBox" class="alert-box"></div>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('dashboardTab', this); renderDashboard();">
+        <i class="fa-solid fa-chart-pie"></i> बिझनेस डॅशबोर्ड
+      </button>
+      <button class="tab-btn" onclick="switchTab('newBookingTab', this)">
+        <i class="fa-solid fa-folder-plus"></i> नवीन बुकिंग
+      </button>
+      <button class="tab-btn" onclick="switchTab('payBalanceTab', this)">
+        <i class="fa-solid fa-hand-holding-dollar"></i> जमा / PAID करा
+      </button>
+      <button class="tab-btn" onclick="switchTab('cancelTab', this)">
+        <i class="fa-solid fa-rectangle-xmark"></i> बुकिंग रद्द करा
+      </button>
+      <button class="tab-btn" onclick="switchTab('historyTab', this); loadAllBookings();">
+        <i class="fa-solid fa-table-list"></i> सर्व बुकिंग यादी
+      </button>
+    </nav>
+
+    <!-- ================= TAB 0: BUSINESS ANALYTICS DASHBOARD ================= -->
+    <section id="dashboardTab" class="tab-content active">
+      <div class="section-title" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div><i class="fa-solid fa-chart-pie"></i> बिझनेस ॲनालिटिक्स व जमा रक्कम पृथक्करण</div>
+        <button type="button" onclick="loadAllBookings();" style="background:var(--primary); color:white; border:none; padding:6px 14px; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer;">
+          <i class="fa-solid fa-rotate-right"></i> रीफ्रेश डेटा
+        </button>
+      </div>
+
+      <!-- Financial Metrics Grid -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap:14px; margin-bottom:20px;">
+        
+        <!-- Total Collection -->
+        <div style="background:linear-gradient(135deg, #1e8449 0%, #27ae60 100%); color:white; padding:16px; border-radius:14px; box-shadow:0 4px 15px rgba(39,174,96,0.25);">
+          <div style="font-size:12px; opacity:0.9; text-transform:uppercase; font-weight:700;"><i class="fa-solid fa-vault"></i> एकूण प्राप्त रक्कम</div>
+          <div id="dashTotalReceived" style="font-size:24px; font-weight:800; margin-top:4px;">₹ 0</div>
+          <div style="font-size:11px; opacity:0.85; margin-top:4px;">(ॲडव्हान्स + पूर्ण जमा वसुली)</div>
+        </div>
+
+        <!-- Cash Collection -->
+        <div style="background:linear-gradient(135deg, #d35400 0%, #e67e22 100%); color:white; padding:16px; border-radius:14px; box-shadow:0 4px 15px rgba(211,84,0,0.25);">
+          <div style="font-size:12px; opacity:0.9; text-transform:uppercase; font-weight:700;"><i class="fa-solid fa-money-bill-wave"></i> कॅश द्वारे जमा (Cash)</div>
+          <div id="dashCashReceived" style="font-size:24px; font-weight:800; margin-top:4px;">₹ 0</div>
+          <div id="dashCashPct" style="font-size:11px; opacity:0.85; margin-top:4px;">0% रोख संकलन</div>
+        </div>
+
+        <!-- UPI / Online Collection -->
+        <div style="background:linear-gradient(135deg, #2980b9 0%, #3498db 100%); color:white; padding:16px; border-radius:14px; box-shadow:0 4px 15px rgba(41,128,185,0.25);">
+          <div style="font-size:12px; opacity:0.9; text-transform:uppercase; font-weight:700;"><i class="fa-solid fa-qrcode"></i> UPI / ऑनलाईन जमा</div>
+          <div id="dashUpiReceived" style="font-size:24px; font-weight:800; margin-top:4px;">₹ 0</div>
+          <div id="dashUpiPct" style="font-size:11px; opacity:0.85; margin-top:4px;">0% ऑनलाईन संकलन</div>
+        </div>
+
+        <!-- Pending Balance -->
+        <div style="background:linear-gradient(135deg, #c0392b 0%, #e74c3c 100%); color:white; padding:16px; border-radius:14px; box-shadow:0 4px 15px rgba(192,57,43,0.25);">
+          <div style="font-size:12px; opacity:0.9; text-transform:uppercase; font-weight:700;"><i class="fa-solid fa-clock-rotate-left"></i> एकूण येणे बाकी रक्कम</div>
+          <div id="dashPendingBalance" style="font-size:24px; font-weight:800; margin-top:4px;">₹ 0</div>
+          <div style="font-size:11px; opacity:0.85; margin-top:4px;">(सध्या शिल्लक बाकी)</div>
+        </div>
+
+      </div>
+
+      <!-- Payment Mode Comparison Visual Progress Bar -->
+      <div style="background:#fafafa; border:1px solid #f0f0f0; border-radius:12px; padding:16px; margin-bottom:24px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:800; color:var(--dark); margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+          <span><i class="fa-solid fa-money-bill-1" style="color:#d35400;"></i> कॅश जमा: <span id="dashBarCashTxt">₹ 0 (0%)</span></span>
+          <span><i class="fa-solid fa-qrcode" style="color:#2980b9;"></i> UPI जमा: <span id="dashBarUpiTxt">₹ 0 (0%)</span></span>
+        </div>
+        <div style="width:100%; height:16px; background:#e0e0e0; border-radius:10px; overflow:hidden; display:flex;">
+          <div id="dashBarCash" style="width:50%; height:100%; background:linear-gradient(90deg, #d35400, #e67e22); transition:width 0.4s ease;"></div>
+          <div id="dashBarUpi" style="width:50%; height:100%; background:linear-gradient(90deg, #2980b9, #3498db); transition:width 0.4s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Owner / Staff Wise Performance Table -->
+      <div style="margin-top:10px;">
+        <h3 style="font-size:16px; font-weight:800; color:var(--secondary); margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-users"></i> व्यक्तिनिहाय बुकिंग व वसुली तपशील (Owner & Staff Breakdown)
+        </h3>
+        <div class="table-responsive">
+          <table style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr style="background:var(--secondary-dark); color:#f9e79f;">
+                <th style="text-align:center;">अ. क्र.</th>
+                <th>बुकिंग मालक / कर्मचारी (Owner Name)</th>
+                <th style="text-align:center;">बुकिंग संख्या</th>
+                <th style="text-align:right;">कॅश वसुली (₹)</th>
+                <th style="text-align:right;">UPI / ऑनलाईन वसुली (₹)</th>
+                <th style="text-align:right;">एकूण जमा वसुली (₹)</th>
+              </tr>
+            </thead>
+            <tbody id="ownerPerformanceBody">
+              <tr><td colspan="6" style="text-align:center; padding:15px; color:#7f8c8d;"><i class="fa-solid fa-spinner fa-spin"></i> डेटा लोड होत आहे...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Statue & Status Distribution Cards -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-top:24px;">
+        <div style="background:#fef9e7; border:1px solid #f9e79f; padding:14px; border-radius:12px; text-align:center;">
+          <div style="font-size:12px; font-weight:700; color:#d35400;">एकूण नोंदवलेली मलमूल्य (Total Business)</div>
+          <div id="dashTotalBusinessValue" style="font-size:20px; font-weight:800; color:var(--dark); margin-top:4px;">₹ 0</div>
+        </div>
+        <div style="background:#eaf2f8; border:1px solid #aeb6bf; padding:14px; border-radius:12px; text-align:center;">
+          <div style="font-size:12px; font-weight:700; color:#2980b9;">पूर्ण भरलेले बुकिंग (PAID)</div>
+          <div id="dashPaidCountDetails" style="font-size:20px; font-weight:800; color:#2980b9; margin-top:4px;">0 मोजणी</div>
+        </div>
+        <div style="background:#feefea; border:1px solid #f5cba7; padding:14px; border-radius:12px; text-align:center;">
+          <div style="font-size:12px; font-weight:700; color:#d35400;">अद्याप चालू बुकिंग (BOOKED)</div>
+          <div id="dashBookedCountDetails" style="font-size:20px; font-weight:800; color:#d35400; margin-top:4px;">0 मोजणी</div>
+        </div>
+        <div style="background:#fadbd8; border:1px solid #f5b7b1; padding:14px; border-radius:12px; text-align:center;">
+          <div style="font-size:12px; font-weight:700; color:#c0392b;">रद्द बुकिंग (CANCELLED)</div>
+          <div id="dashCancelledCountDetails" style="font-size:20px; font-weight:800; color:#c0392b; margin-top:4px;">0 मोजणी</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 1: NEW BOOKING FORM ================= -->
+    <section id="newBookingTab" class="tab-content">
+      <div class="section-title">
+        <i class="fa-solid fa-pen-to-square"></i> नवीन गणपती बाप्पा मूर्ती बुकिंग फॉर्म
+      </div>
+
+      <form id="bookingForm" onsubmit="handleNewBookingSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>दिनांक (Date)</label>
+            <input type="text" id="bookingDate" readonly style="background:#f2f4f4; font-weight:700;">
+          </div>
+
+          <div class="form-group">
+            <label>कस्टमरचे नाव (Customer Name) <span class="req">*</span></label>
+            <input type="text" id="customerName" required placeholder="उदा. अमित पाटील">
+          </div>
+
+          <div class="form-group">
+            <label>मोबाईल क्रमांक (Mobile Number) <span class="req">*</span></label>
+            <input type="tel" id="mobileNumber" required pattern="[0-9]{10}" placeholder="१० अंकी मोबाईल नंबर">
+          </div>
+
+          <div class="form-group">
+            <label>ईमेल आयडी (Email ID)</label>
+            <input type="email" id="emailId" placeholder="customer@gmail.com (ऐच्छिक)">
+          </div>
+
+          <div class="form-group">
+            <label>बुक केलेल्या मूर्ती क्रमांक (Statue Code) <span class="req">*</span></label>
+            <input type="text" id="statueNumber" required placeholder="उदा. M-108 / St-12" oninput="validateStatueNumber(this)">
+            <div id="statueNumError" style="display:none; color:var(--danger); font-size:12px; font-weight:700; margin-top:4px;"></div>
+          </div>
+
+          <!-- Dual Photo Upload Options: Camera vs Device Gallery -->
+          <div class="form-group full-width">
+            <label>मूर्ती फोटो अपलोड (Statue Photo Upload) <span style="font-weight:normal; color:#7f8c8d;">(कॅमेरा किंवा गॅलरी)</span></label>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-top:4px;">
+              <!-- Option 1: Live Camera Capture -->
+              <div class="photo-upload-container" onclick="document.getElementById('statueCameraFile').click()" style="padding:14px 10px; margin:0; background:linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%); border:1.5px dashed var(--primary);">
+                <i class="fa-solid fa-camera-retro" style="font-size:26px; color:var(--primary);"></i>
+                <div style="font-size:13px; font-weight:800; margin-top:6px; color:var(--primary-dark);">📷 कॅमेराने फोटो काढा</div>
+                <div style="font-size:11px; color:#7f8c8d;">(Take Photo via Camera)</div>
+              </div>
+              
+              <!-- Option 2: Gallery / File Device Select -->
+              <div class="photo-upload-container" onclick="document.getElementById('statueGalleryFile').click()" style="padding:14px 10px; margin:0; background:linear-gradient(135deg, #f4ecf7 0%, #e8daef 100%); border:1.5px dashed var(--secondary);">
+                <i class="fa-solid fa-folder-open" style="font-size:26px; color:var(--secondary);"></i>
+                <div style="font-size:13px; font-weight:800; margin-top:6px; color:var(--secondary-dark);">📁 डिव्हाईस / गॅलरी मधून निवडा</div>
+                <div style="font-size:11px; color:#7f8c8d;">(Select File from Gallery)</div>
+              </div>
+            </div>
+
+            <!-- Hidden Input Controls -->
+            <input type="file" id="statueCameraFile" accept="image/*" capture="environment" style="display:none;" onchange="previewImage(this)">
+            <input type="file" id="statueGalleryFile" accept="image/*" style="display:none;" onchange="previewImage(this)">
+
+            <!-- Preview Image & Remove Control -->
+            <div id="previewWrapper" style="display:none; margin-top:12px; text-align:center; position:relative; background:#fafafa; padding:10px; border-radius:10px; border:1px solid #eaeded;">
+              <div style="font-size:12px; font-weight:700; color:#27ae60; margin-bottom:6px;">✓ मूर्ती फोटो अपलोड करण्यासाठी निवडला गेला आहे:</div>
+              <img id="photoPreview" class="photo-preview-img" style="max-height:160px; border-radius:10px; border:2px solid var(--primary); box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+              <div style="margin-top:6px;">
+                <button type="button" onclick="removePreviewImage()" style="background:#e74c3c; color:white; border:none; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;">
+                  <i class="fa-solid fa-trash-can"></i> फोटो काढून टाका
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>एकूण रक्कम ₹ (Total Amount) <span class="req">*</span></label>
+            <input type="number" id="totalAmount" min="0" required placeholder="उदा. 15000" oninput="calculateBalance()">
+          </div>
+
+          <div class="form-group">
+            <label>जमा रक्कम ₹ (Advance Paid) <span class="req">*</span></label>
+            <input type="number" id="advanceAmount" min="0" required placeholder="उदा. 5000" oninput="calculateBalance()">
+          </div>
+
+          <div class="form-group full-width">
+            <div class="calc-box">
+              <div>
+                <strong style="color:#5d6d7e; font-size:13px;">बाकी राहणारी रक्कम (Balance Due):</strong>
+                <div style="font-size:11px; color:#a04000;">* हिशोब (एकूण - जमा)</div>
+              </div>
+              <div class="calc-amount" id="balanceDisplay">₹ 0</div>
+            </div>
+          </div>
+
+          <!-- Payment Mode -->
+          <div class="form-group full-width">
+            <label>पेमेंट प्रकार (Payment Mode) <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="paymentMode" value="कॅश" checked> 💵 कॅश
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="paymentMode" value="UPI"> 📱 UPI
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="paymentMode" value="ऑनलाईन"> 💻 ऑनलाईन
+              </label>
+            </div>
+          </div>
+
+          <!-- Booked By Owner -->
+          <div class="form-group full-width">
+            <label>बुकिंग करणारा मालक (Booked By Owner) <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="bookedByOwner" value="शिव" checked> 👤 शिव
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="bookedByOwner" value="राहुल"> 👤 राहुल
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="bookedByOwner" value="हर्षद"> 👤 हर्षद
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBookingBtn" class="btn-submit">
+          <i class="fa-solid fa-file-invoice-dollar"></i> बुकिंग जतन करा व मराठी बिल (PDF) तयार करा
+        </button>
+      </form>
+    </section>
+
+      <!-- ================= TAB 2: PAY BALANCE (MARK PAID) ================= -->
+    <section id="payBalanceTab" class="tab-content">
+      <div class="section-title">
+        <i class="fa-solid fa-circle-dollar-to-slot"></i> बाकी जमा करा व 'PAID' करा
+      </div>
+
+      <div class="search-input-box">
+        <input type="text" id="paySearchQuery" placeholder="आयडी किंवा मोबाईल नंबर टाका (उदा. GB-2026-0001)" onkeypress="if(event.key==='Enter') searchBookingForPay()">
+        <button type="button" id="btnPaySearch" class="btn-submit" style="width:auto; margin:0; padding:12px 20px; min-height:48px;" onclick="searchBookingForPay()">
+          <i class="fa-solid fa-magnifying-glass"></i> शोधा
+        </button>
+      </div>
+
+      <div id="payDetailsCard" style="display:none; border:1px solid #d5dbdb; padding:20px; border-radius:12px; background:#fafafa;">
+        <h4 id="payCustomerName" style="color:var(--primary); font-size:19px; font-weight:800;">-</h4>
+        <p style="margin-top:4px; font-size:14px;"><strong>आयडी:</strong> <span id="payBookingId" style="color:var(--secondary); font-weight:700;">-</span> | <strong>मूर्ती क्र.:</strong> <span id="payStatueNo" style="font-weight:700;">-</span></p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin:16px 0; background:white; padding:14px; border-radius:10px; border:1px solid #eaeaea;">
+          <div>एकूण: <br><strong id="payTotalAmount" style="font-size:16px;">₹ 0</strong></div>
+          <div>पूर्वी जमा: <br><strong id="payAdvanceAmount" style="color:var(--info); font-size:16px;">₹ 0</strong></div>
+          <div>बाकी रक्कम: <br><strong id="payBalanceAmount" style="color:var(--danger); font-size:20px;">₹ 0</strong></div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>अंतिम पेमेंट प्रकार (Final Payment Mode) <span class="req">*</span></label>
+          <select id="finalPayMode">
+            <option value="कॅश">💵 कॅश (Cash)</option>
+            <option value="UPI">📱 UPI (GPay/PhonePe)</option>
+            <option value="ऑनलाईन">💻 ऑनलाईन (Online NetBanking)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom:18px;">
+          <label>अंतिम जमा घेणारा मालक (Final Payment Owner) <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card">
+              <input type="radio" name="finalPayOwner" value="शिव" checked> 👤 शिव
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="finalPayOwner" value="राहुल"> 👤 राहुल
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="finalPayOwner" value="हर्षद"> 👤 हर्षद
+            </label>
+          </div>
+        </div>
+
+        <button type="button" id="markPaidBtn" class="btn-submit" style="background:linear-gradient(135deg, #27ae60 0%, #1e8449 100%); box-shadow:0 4px 15px rgba(39, 174, 96, 0.35);" onclick="confirmMarkAsPaid()">
+          <i class="fa-solid fa-circle-check"></i> बाकी रक्कम जमा झाली - 'PAID' करा
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: CANCEL BOOKING ================= -->
+    <section id="cancelTab" class="tab-content">
+      <div class="section-title">
+        <i class="fa-solid fa-ban"></i> बुकिंग रद्द करा (Cancellation)
+      </div>
+
+      <div class="search-input-box">
+        <input type="text" id="cancelSearchQuery" placeholder="आयडी किंवा मोबाईल नंबर टाका" onkeypress="if(event.key==='Enter') searchBookingForCancel()">
+        <button type="button" id="btnCancelSearch" class="btn-submit" style="width:auto; margin:0; padding:12px 20px; background:#5d6d7e; min-height:48px;" onclick="searchBookingForCancel()">
+          <i class="fa-solid fa-magnifying-glass"></i> शोधा
+        </button>
+      </div>
+
+      <div id="cancelDetailsCard" style="display:none; border:1px solid #f5b7b1; padding:20px; border-radius:12px; background:#fdf2e9;">
+        <h4 id="cancelCustomerName" style="color:var(--danger); font-size:19px; font-weight:800;">-</h4>
+        <p style="margin-top:4px; font-size:14px;"><strong>आयडी:</strong> <span id="cancelBookingId" style="font-weight:700;">-</span> | <strong>मूर्ती क्र.:</strong> <span id="cancelStatueNo" style="font-weight:700;">-</span></p>
+
+        <div class="form-group" style="margin:14px 0;">
+          <label>बुकिंग रद्द करणारा मालक (Cancellation Owner) <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card">
+              <input type="radio" name="cancellationOwner" value="शिव" checked> 👤 शिव
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="cancellationOwner" value="राहुल"> 👤 राहुल
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="cancellationOwner" value="हर्षद"> 👤 हर्षद
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin:14px 0;">
+          <label>बुकिंग रद्द करण्याचे कारण (Reason)</label>
+          <textarea id="cancelReason" rows="3" placeholder="उदा. ग्राहकाची ऑर्डर रद्द"></textarea>
+        </div>
+
+        <button type="button" id="confirmCancelBtn" class="btn-submit" style="background:linear-gradient(135deg, #c0392b 0%, #922b21 100%); box-shadow:0 4px 15px rgba(192, 57, 43, 0.35);" onclick="confirmCancellation()">
+          <i class="fa-solid fa-trash-can"></i> बुकिंग रद्द करा (Confirm Cancellation)
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: HISTORY & DASHBOARD ================= -->
+    <section id="historyTab" class="tab-content">
+      <div class="section-title">
+        <i class="fa-solid fa-list-check"></i> सर्व गणपती बाप्पा बुकिंग यादी व संपूर्ण माहिती
+      </div>
+
+      <!-- Advanced Filters Control Panel -->
+      <div class="filter-panel">
+        <div class="filter-header">
+          <span><i class="fa-solid fa-filter"></i> फिल्टर निवडा (Filters)</span>
+          <button type="button" class="btn-reset-filter" onclick="resetBookingFilters()">
+            <i class="fa-solid fa-rotate-left"></i> रीसेट करा
+          </button>
+        </div>
+        
+        <div class="filter-grid">
+          <!-- Search Field & Search Method Dropdown -->
+          <div class="filter-group" style="grid-column: 1 / -1;">
+            <label>शोधा मार्ग व पद्धत (Search Method & Query)</label>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <select id="filterSearchMethod" onchange="applyBookingFilters()" style="flex:1; min-width:140px; max-width:210px; font-weight:700;">
+                <option value="ALL_FIELDS">🔍 सर्व क्षेत्रात शोधा (All)</option>
+                <option value="NAME">👤 कस्टमर चे नाव (Name)</option>
+                <option value="MOBILE">📱 मोबाईल क्रमांक (Mobile)</option>
+                <option value="ID">🏷️ बुकिंग आयडी (Booking ID)</option>
+                <option value="STATUE">🗿 मूर्ती क्रमांक (Statue No)</option>
+              </select>
+              <input type="text" id="filterSearchQuery" placeholder="शोधा शब्द / क्रमांक टाका..." oninput="applyBookingFilters()" onkeypress="if(event.key==='Enter') applyBookingFilters()" style="flex:2; min-width:180px;">
+              <button type="button" id="btnFilterSearch" class="btn-submit" style="width:auto; margin:0; padding:8px 20px; min-height:42px; font-size:14px; white-space:nowrap;" onclick="applyBookingFilters()">
+                <i class="fa-solid fa-magnifying-glass"></i> शोधा
+              </button>
+            </div>
+          </div>
+
+          <!-- Date Span From -->
+          <div class="filter-group">
+            <label>पासून दिनांक (From Date)</label>
+            <input type="date" id="filterStartDate" onchange="applyBookingFilters()">
+          </div>
+
+          <!-- Date Span To -->
+          <div class="filter-group">
+            <label>पर्यंत दिनांक (To Date)</label>
+            <input type="date" id="filterEndDate" onchange="applyBookingFilters()">
+          </div>
+
+          <!-- Owner Filter -->
+          <div class="filter-group">
+            <label>बुकिंग करणारा मालक</label>
+            <select id="filterOwner" onchange="applyBookingFilters()">
+              <option value="ALL">सर्व मालक (All)</option>
+              <option value="शिव">शिव</option>
+              <option value="राहुल">राहुल</option>
+              <option value="हर्षद">हर्षद</option>
+            </select>
+          </div>
+
+          <!-- Status Filter -->
+          <div class="filter-group">
+            <label>बुकिंग स्थिती (Status)</label>
+            <select id="filterStatus" onchange="applyBookingFilters()">
+              <option value="ALL">सर्व स्थिती (All)</option>
+              <option value="BOOKED">BOOKED (बुकिंग)</option>
+              <option value="PAID">PAID (पूर्ण जमा)</option>
+              <option value="CANCELLED">CANCELLED (रद्द)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 50px; text-align: center;">अ. क्र.</th>
+              <th>आयडी & नोंदणी वेळ</th>
+              <th>दिनांक</th>
+              <th>कस्टमर चे नाव & मोबाईल</th>
+              <th>मूर्ती क्र.</th>
+              <th>रक्कम (एकूण / जमा / बाकी)</th>
+              <th>बुकिंग मालक & मोड</th>
+              <th>अंतिम जमा / रद्दीकरण तपशील</th>
+              <th>स्थिती</th>
+              <th>मराठी बिल PDF</th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody">
+            <tr><td colspan="10" style="text-align:center; padding:20px;"><i class="fa-solid fa-spinner fa-spin"></i> डेटा लोड होत आहे...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Production Web App Footer -->
+  <footer class="main-footer">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h3><i class="fa-solid fa-gopuram"></i> सदिच्छा कला केंद्र</h3>
+        <p>आमच्या येथे पेण येथील सुबक आणि आकर्षक, शाडू मातीच्या गणेश मूर्ती मिळतील. आपल्या उत्सवासाठी आमची प्रामाणिक सेवा.</p>
+        <p style="margin-top:8px; font-weight:800; color:#f39c12;">🌺 ॥ गणपती बाप्पा मोरया ॥ 🌺</p>
+      </div>
+
+      <div class="footer-col">
+        <h3><i class="fa-solid fa-location-dot"></i> स्टॉल पत्ता</h3>
+        <p><strong>सदिच्छा कला केंद्र, स्टॉल क्रमांक १०</strong><br>उदाजी महाराज म्युझियम ऑफ एज्युकेशन हेरिटेज,<br>आकाशवाणी टॉवर जवळ, गंगापूर रोड, नाशिक</p>
+      </div>
+
+      <div class="footer-col">
+        <h3><i class="fa-solid fa-phone"></i> संपर्क (मालक)</h3>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-user"></i> शिव : ९१५८१९९३००</li>
+          <li><i class="fa-solid fa-user"></i> राहुल : ९६५७५०२१९१</li>
+          <li><i class="fa-solid fa-user"></i> हर्षद : ८३९०००१३९०</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Official Developer Attribution Bar -->
+    <div class="developer-bar">
+      <div>© 2026 सदिच्छा कला केंद्र | सर्व हक्क राखीव</div>
+      <div style="margin-top:6px;">
+        <strong>Developed by</strong> <span class="developer-names">Avadhut Jagtap, Shivkumar Kanaje and Harshad Thorat</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  let currentBase64Image = "";
+  let selectedBookingForPay = null;
+  let selectedBookingForCancel = null;
+  let allBookingsMasterData = []; // Global store for master bookings list
+
+  // Set today's date on load
+  document.addEventListener("DOMContentLoaded", function() {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    document.getElementById('bookingDate').value = `${dd}/${mm}/${yyyy}`;
+    
+    // Initial fetch of quick stats & master list
+    loadAllBookings();
+  });
+
+  function switchTab(tabId, btnElement) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btnElement.classList.add('active');
+    hideAlert();
+  }
+
+  function showAlert(msg, isSuccess = true) {
+    const box = document.getElementById('alertBox');
+    box.className = 'alert-box ' + (isSuccess ? 'alert-success' : 'alert-error');
+    box.innerHTML = msg;
+    box.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function hideAlert() {
+    document.getElementById('alertBox').style.display = 'none';
+  }
+
+  function previewImage(input) {
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          const maxDim = 800;
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          currentBase64Image = canvas.toDataURL('image/jpeg', 0.85);
+          const previewImg = document.getElementById('photoPreview');
+          previewImg.src = currentBase64Image;
+          previewImg.style.display = 'inline-block';
+          const wrapper = document.getElementById('previewWrapper');
+          if (wrapper) wrapper.style.display = 'block';
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function removePreviewImage() {
+    currentBase64Image = "";
+    const cam = document.getElementById('statueCameraFile');
+    const gal = document.getElementById('statueGalleryFile');
+    if (cam) cam.value = "";
+    if (gal) gal.value = "";
+    const previewImg = document.getElementById('photoPreview');
+    if (previewImg) previewImg.src = "";
+    const wrapper = document.getElementById('previewWrapper');
+    if (wrapper) wrapper.style.display = 'none';
+  }
+
+  function calculateBalance() {
+    const total = parseFloat(document.getElementById('totalAmount').value) || 0;
+    const advance = parseFloat(document.getElementById('advanceAmount').value) || 0;
+    const balance = Math.max(0, total - advance);
+    document.getElementById('balanceDisplay').innerText = `₹ ${balance.toLocaleString('en-IN')}`;
+  }
+
+  // Submit New Booking to Apps Script backend
+  function handleNewBookingSubmit(event) {
+    event.preventDefault();
+    const statueInput = document.getElementById('statueNumber');
+    if (!validateStatueNumber(statueInput)) {
+      showAlert(`⚠️ मूर्ती क्रमांक '${statueInput.value}' ही अगोदरच बुक झालेली आहे. कृपया दुसरा मूर्ती क्रमांक टाका.`, false);
+      return;
+    }
+
+    const submitBtn = document.getElementById('submitBookingBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> बिल तयार होत आहे... कृपया थांबा';
+
+    const formData = {
+      bookingDate: document.getElementById('bookingDate').value,
+      customerName: document.getElementById('customerName').value,
+      mobileNumber: document.getElementById('mobileNumber').value,
+      emailId: document.getElementById('emailId').value,
+      statueNumber: document.getElementById('statueNumber').value,
+      totalAmount: document.getElementById('totalAmount').value,
+      advanceAmount: document.getElementById('advanceAmount').value,
+      paymentMode: document.querySelector('input[name="paymentMode"]:checked').value,
+      bookedByOwner: document.querySelector('input[name="bookedByOwner"]:checked').value,
+      statueImageBase64: currentBase64Image
+    };
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fa-solid fa-file-invoice-dollar"></i> बुकिंग जतन करा व मराठी बिल (PDF) तयार करा';
+          
+          if (res.success) {
+            lastCreatedBookingRes = {
+              pdfUrl: res.pdfUrl,
+              pdfBase64: res.pdfBase64,
+              bookingId: res.bookingId,
+              customerName: formData.customerName,
+              mobileNumber: formData.mobileNumber
+            };
+
+            let msg = `🎉 ${res.message}`;
+            if (res.pdfUrl) {
+              msg += `<div class="pdf-actions" style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
+                <a href="${res.pdfUrl}" target="_blank" class="pdf-link-btn"><i class="fa-solid fa-file-pdf"></i> मराठी बिल PDF उघडा / प्रिंट करा</a>
+                <button type="button" class="wa-share-btn" onclick="shareLastBookingPdf()">
+                  <i class="fa-brands fa-whatsapp"></i> 📲 WhatsApp वर बिल PDF पाठवा
+                </button>
+              </div>`;
+            }
+            showAlert(msg, true);
+            document.getElementById('bookingForm').reset();
+            removePreviewImage();
+            calculateBalance();
+            loadAllBookings(); // refresh stats & table
+          } else {
+            showAlert(res.message, false);
+          }
+        })
+        .withFailureHandler(function(err) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fa-solid fa-file-invoice-dollar"></i> बुकिंग जतन करा व मराठी बिल (PDF) तयार करा';
+          showAlert("सर्व्हर त्रुटी: " + err.message, false);
+        })
+        .createNewBooking(formData);
+    } else {
+      // Preview Fallback
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-file-invoice-dollar"></i> बुकिंग जतन करा व मराठी बिल (PDF) तयार करा';
+        lastCreatedBookingRes = {
+          pdfUrl: "https://drive.google.com/file/d/1D4YKD5A-g0Tgb1yTD0pGx7vCFPJ5-oa5/view",
+          pdfBase64: "",
+          bookingId: "GB-2026-0001",
+          customerName: formData.customerName || "अमित देशपांडे",
+          mobileNumber: formData.mobileNumber || "9876543210"
+        };
+        let msg = `🎉 चाचणी बुकिंग यशस्वी! आयडी: GB-2026-0001 (Preview Mode)`;
+        msg += `<div class="pdf-actions" style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
+          <a href="#" class="pdf-link-btn"><i class="fa-solid fa-file-pdf"></i> मराठी बिल PDF उघडा / प्रिंट करा</a>
+          <button type="button" class="wa-share-btn" onclick="shareLastBookingPdf()">
+            <i class="fa-brands fa-whatsapp"></i> 📲 WhatsApp वर बिल PDF पाठवा
+          </button>
+        </div>`;
+        showAlert(msg, true);
+      }, 500);
+    }
+  }
+
+  // Search Booking for Settlement (Tab 2)
+  function searchBookingForPay() {
+    const q = document.getElementById('paySearchQuery').value.trim();
+    if (!q) return showAlert("कृपया आयडी किंवा मोबाईल नंबर टाका.", false);
+
+    const btn = document.getElementById('btnPaySearch');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> शोधत आहे...';
+    }
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोधा';
+          }
+          if (res && res.success && res.booking) {
+            selectedBookingForPay = res.booking;
+            document.getElementById('payCustomerName').innerText = res.booking.customerName || '-';
+            document.getElementById('payBookingId').innerText = res.booking.bookingId || '-';
+            document.getElementById('payStatueNo').innerText = res.booking.statueNumber || '-';
+            
+            const total = parseFloat(String(res.booking.totalAmount || 0).replace(/,/g, '')) || 0;
+            const advance = parseFloat(String(res.booking.advanceAmount || 0).replace(/,/g, '')) || 0;
+            const balance = parseFloat(String(res.booking.balanceAmount || 0).replace(/,/g, '')) || 0;
+
+            document.getElementById('payTotalAmount').innerText = `₹ ${total.toLocaleString('en-IN')}`;
+            document.getElementById('payAdvanceAmount').innerText = `₹ ${advance.toLocaleString('en-IN')}`;
+            document.getElementById('payBalanceAmount').innerText = `₹ ${balance.toLocaleString('en-IN')}`;
+            document.getElementById('payDetailsCard').style.display = 'block';
+            hideAlert();
+          } else {
+            showAlert(res ? res.message : "माहिती सापडली नाही.", false);
+            document.getElementById('payDetailsCard').style.display = 'none';
+          }
+        })
+        .withFailureHandler(function(err) {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोधा';
+          }
+          showAlert("सर्व्हर त्रुटी: " + (err.message || err), false);
+          document.getElementById('payDetailsCard').style.display = 'none';
+        })
+        .searchBooking(q);
+    } else {
+      // Standalone Preview Fallback
+      setTimeout(() => {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोधा';
+        }
+        selectedBookingForPay = {
+          bookingId: "GB-2026-0001",
+          customerName: "अमित देशपांडे",
+          statueNumber: "M-108",
+          totalAmount: 18000,
+          advanceAmount: 5000,
+          balanceAmount: 13000
+        };
+        document.getElementById('payCustomerName').innerText = "अमित देशपांडे (Preview Mode)";
+        document.getElementById('payBookingId').innerText = "GB-2026-0001";
+        document.getElementById('payStatueNo').innerText = "M-108";
+        document.getElementById('payTotalAmount').innerText = "₹ 18,000";
+        document.getElementById('payAdvanceAmount').innerText = "₹ 5,000";
+        document.getElementById('payBalanceAmount').innerText = "₹ 13,000";
+        document.getElementById('payDetailsCard').style.display = 'block';
+        hideAlert();
+      }, 400);
+    }
+  }
+
+  function confirmMarkAsPaid() {
+    if (!selectedBookingForPay) return;
+    const btn = document.getElementById('markPaidBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> जमा करत आहे...';
+    const mode = document.getElementById('finalPayMode').value;
+    const owner = document.querySelector('input[name="finalPayOwner"]:checked')?.value || 'शिव';
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> बाकी रक्कम जमा झाली - \'PAID\' करा';
+          if (res && res.success) {
+            showAlert(res.message, true);
+            document.getElementById('payDetailsCard').style.display = 'none';
+            loadAllBookings();
+          } else {
+            showAlert(res ? res.message : "त्रुटी आली.", false);
+          }
+        })
+        .withFailureHandler(function(err) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> बाकी रक्कम जमा झाली - \'PAID\' करा';
+          showAlert("सर्व्हर त्रुटी: " + (err.message || err), false);
+        })
+        .markBookingAsPaid(selectedBookingForPay.bookingId, mode, owner);
+    } else {
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> बाकी रक्कम जमा झाली - \'PAID\' करा';
+        showAlert(`बुकिंग आयडी ${selectedBookingForPay.bookingId} चे स्टेटस यशस्वीरित्या 'PAID' (Preview Mode) केले!`, true);
+        document.getElementById('payDetailsCard').style.display = 'none';
+      }, 500);
+    }
+  }
+
+  // Search Booking for Cancellation (Tab 3)
+  function searchBookingForCancel() {
+    const q = document.getElementById('cancelSearchQuery').value.trim();
+    if (!q) return showAlert("कृपया आयडी किंवा मोबाईल नंबर टाका.", false);
+
+    const btn = document.getElementById('btnCancelSearch');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> शोधत आहे...';
+    }
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोधा';
+          }
+          if (res && res.success && res.booking) {
+            selectedBookingForCancel = res.booking;
+            document.getElementById('cancelCustomerName').innerText = res.booking.customerName || '-';
+            document.getElementById('cancelBookingId').innerText = res.booking.bookingId || '-';
+            document.getElementById('cancelStatueNo').innerText = res.booking.statueNumber || '-';
+            document.getElementById('cancelDetailsCard').style.display = 'block';
+            hideAlert();
+          } else {
+            showAlert(res ? res.message : "माहिती सापडली नाही.", false);
+            document.getElementById('cancelDetailsCard').style.display = 'none';
+          }
+        })
+        .withFailureHandler(function(err) {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोधा';
+          }
+          showAlert("सर्व्हर त्रुटी: " + (err.message || err), false);
+          document.getElementById('cancelDetailsCard').style.display = 'none';
+        })
+        .searchBooking(q);
+    } else {
+      // Standalone Preview Fallback
+      setTimeout(() => {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोधा';
+        }
+        selectedBookingForCancel = {
+          bookingId: "GB-2026-0001",
+          customerName: "अमित देशपांडे",
+          statueNumber: "M-108"
+        };
+        document.getElementById('cancelCustomerName').innerText = "अमित देशपांडे (Preview Mode)";
+        document.getElementById('cancelBookingId').innerText = "GB-2026-0001";
+        document.getElementById('cancelStatueNo').innerText = "M-108";
+        document.getElementById('cancelDetailsCard').style.display = 'block';
+        hideAlert();
+      }, 400);
+    }
+  }
+
+  function confirmCancellation() {
+    if (!selectedBookingForCancel) return;
+    const reason = document.getElementById('cancelReason').value.trim();
+    const owner = document.querySelector('input[name="cancellationOwner"]:checked')?.value || 'शिव';
+    const btn = document.getElementById('confirmCancelBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> रद्द करत आहे...';
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-trash-can"></i> बुकिंग रद्द करा (Confirm Cancellation)';
+          if (res && res.success) {
+            showAlert(res.message, true);
+            document.getElementById('cancelDetailsCard').style.display = 'none';
+            loadAllBookings();
+          } else {
+            showAlert(res ? res.message : "त्रुटी आली.", false);
+          }
+        })
+        .withFailureHandler(function(err) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-trash-can"></i> बुकिंग रद्द करा (Confirm Cancellation)';
+          showAlert("सर्व्हर त्रुटी: " + (err.message || err), false);
+        })
+        .cancelBooking(selectedBookingForCancel.bookingId, reason, owner);
+    } else {
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-trash-can"></i> बुकिंग रद्द करा (Confirm Cancellation)';
+        showAlert(`बुकिंग आयडी ${selectedBookingForCancel.bookingId} यशस्वीरित्या रद्द (Preview Mode) केले!`, true);
+        document.getElementById('cancelDetailsCard').style.display = 'none';
+      }, 500);
+    }
+  }
+
+  // Render Business Analytics Dashboard
+  function renderDashboard() {
+    const list = allBookingsMasterData || [];
+
+    let totalBusinessVal = 0;
+    let totalCashReceived = 0;
+    let totalUpiReceived = 0;
+    let totalPendingBal = 0;
+    let paidCount = 0;
+    let bookedCount = 0;
+    let cancelledCount = 0;
+
+    const ownerMap = {};
+
+    function getOwnerObj(name) {
+      const cleanName = (name && String(name).trim()) ? String(name).trim() : "इतर";
+      if (!ownerMap[cleanName]) {
+        ownerMap[cleanName] = { name: cleanName, bookingsCount: 0, cashCollected: 0, upiCollected: 0 };
+      }
+      return ownerMap[cleanName];
+    }
+
+    list.forEach(b => {
+      if (!b) return;
+      const status = (b.bookingStatus || '').toUpperCase();
+      const totalAmt = parseFloat(String(b.totalAmount || 0).replace(/,/g, '')) || 0;
+      const advAmt = parseFloat(String(b.advanceAmount || 0).replace(/,/g, '')) || 0;
+      const balAmt = parseFloat(String(b.balanceAmount || 0).replace(/,/g, '')) || 0;
+      const advMode = (b.paymentMode || '').toUpperCase();
+      const advOwner = b.bookedByOwner || 'शिव';
+
+      if (status === 'CANCELLED') {
+        cancelledCount++;
+        return; // Skip collection metrics for cancelled bookings
+      }
+
+      totalBusinessVal += totalAmt;
+      totalPendingBal += balAmt;
+
+      if (status === 'PAID') {
+        paidCount++;
+      } else {
+        bookedCount++;
+      }
+
+      // 1. Advance Payment Attribution
+      const advOwnerObj = getOwnerObj(advOwner);
+      advOwnerObj.bookingsCount += 1;
+
+      if (advMode.includes('कॅश') || advMode.includes('CASH')) {
+        totalCashReceived += advAmt;
+        advOwnerObj.cashCollected += advAmt;
+      } else {
+        totalUpiReceived += advAmt;
+        advOwnerObj.upiCollected += advAmt;
+      }
+
+      // 2. Final Balance Payment Attribution
+      if (status === 'PAID') {
+        const finalPaidAmt = Math.max(0, totalAmt - advAmt);
+        if (finalPaidAmt > 0) {
+          const finalOwner = b.finalPaymentOwner || advOwner;
+          const finalMode = (b.finalPaymentMode || advMode).toUpperCase();
+          const finalOwnerObj = getOwnerObj(finalOwner);
+
+          if (finalMode.includes('कॅश') || finalMode.includes('CASH')) {
+            totalCashReceived += finalPaidAmt;
+            finalOwnerObj.cashCollected += finalPaidAmt;
+          } else {
+            totalUpiReceived += finalPaidAmt;
+            finalOwnerObj.upiCollected += finalPaidAmt;
+          }
+        }
+      }
+    });
+
+    const totalReceived = totalCashReceived + totalUpiReceived;
+    const cashPct = totalReceived > 0 ? Math.round((totalCashReceived / totalReceived) * 100) : 0;
+    const upiPct = totalReceived > 0 ? Math.round((totalUpiReceived / totalReceived) * 100) : 0;
+
+    // Update Dashboard Metric Display
+    if (document.getElementById('dashTotalReceived')) document.getElementById('dashTotalReceived').innerText = `₹ ${totalReceived.toLocaleString('en-IN')}`;
+    if (document.getElementById('dashCashReceived')) document.getElementById('dashCashReceived').innerText = `₹ ${totalCashReceived.toLocaleString('en-IN')}`;
+    if (document.getElementById('dashCashPct')) document.getElementById('dashCashPct').innerText = `${cashPct}% रोख संकलन`;
+    if (document.getElementById('dashUpiReceived')) document.getElementById('dashUpiReceived').innerText = `₹ ${totalUpiReceived.toLocaleString('en-IN')}`;
+    if (document.getElementById('dashUpiPct')) document.getElementById('dashUpiPct').innerText = `${upiPct}% ऑनलाईन संकलन`;
+    if (document.getElementById('dashPendingBalance')) document.getElementById('dashPendingBalance').innerText = `₹ ${totalPendingBal.toLocaleString('en-IN')}`;
+
+    // Update Progress Bar
+    if (document.getElementById('dashBarCashTxt')) document.getElementById('dashBarCashTxt').innerText = `₹ ${totalCashReceived.toLocaleString('en-IN')} (${cashPct}%)`;
+    if (document.getElementById('dashBarUpiTxt')) document.getElementById('dashBarUpiTxt').innerText = `₹ ${totalUpiReceived.toLocaleString('en-IN')} (${upiPct}%)`;
+    if (document.getElementById('dashBarCash')) document.getElementById('dashBarCash').style.width = `${cashPct}%`;
+    if (document.getElementById('dashBarUpi')) document.getElementById('dashBarUpi').style.width = `${upiPct}%`;
+
+    // Update Status Cards
+    if (document.getElementById('dashTotalBusinessValue')) document.getElementById('dashTotalBusinessValue').innerText = `₹ ${totalBusinessVal.toLocaleString('en-IN')}`;
+    if (document.getElementById('dashPaidCountDetails')) document.getElementById('dashPaidCountDetails').innerText = `${paidCount} मोजणी`;
+    if (document.getElementById('dashBookedCountDetails')) document.getElementById('dashBookedCountDetails').innerText = `${bookedCount} मोजणी`;
+    if (document.getElementById('dashCancelledCountDetails')) document.getElementById('dashCancelledCountDetails').innerText = `${cancelledCount} मोजणी`;
+
+    // Render Owner Performance Table
+    const ownerTbody = document.getElementById('ownerPerformanceBody');
+    if (ownerTbody) {
+      const ownerKeys = Object.keys(ownerMap);
+      if (ownerKeys.length === 0) {
+        ownerTbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:15px; color:#7f8c8d;">कोणतेही मालक रेकॉर्ड सापडले नाही.</td></tr>';
+      } else {
+        let ownerHtml = '';
+        ownerKeys.forEach((key, idx) => {
+          const o = ownerMap[key];
+          const ownerTotalColl = o.cashCollected + o.upiCollected;
+          ownerHtml += `<tr>
+            <td style="text-align:center; font-weight:800; color:#7f8c8d;">${idx + 1}</td>
+            <td><strong style="color:var(--secondary); font-size:13.5px;"><i class="fa-solid fa-user-tag"></i> ${o.name}</strong></td>
+            <td style="text-align:center; font-weight:800; color:var(--primary);">${o.bookingsCount}</td>
+            <td style="text-align:right; font-weight:700; color:#d35400;">₹ ${o.cashCollected.toLocaleString('en-IN')}</td>
+            <td style="text-align:right; font-weight:700; color:#2980b9;">₹ ${o.upiCollected.toLocaleString('en-IN')}</td>
+            <td style="text-align:right; font-weight:800; color:#1e8449; font-size:14px;">₹ ${ownerTotalColl.toLocaleString('en-IN')}</td>
+          </tr>`;
+        });
+        ownerTbody.innerHTML = ownerHtml;
+      }
+    }
+  }
+
+  // Load All Bookings List & Store Master Copy (With Failure Handler & Fast Fallback)
+  function loadAllBookings() {
+    const tbody = document.getElementById('bookingsTableBody');
+
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          if (res && res.success && res.bookings && res.bookings.length > 0) {
+            allBookingsMasterData = res.bookings;
+            applyBookingFilters();
+            renderDashboard();
+          } else {
+            allBookingsMasterData = [];
+            renderBookingsTable([]);
+            renderDashboard();
+          }
+        })
+        .withFailureHandler(function(err) {
+          tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; padding:20px; color:#c0392b; font-weight:bold;"><i class="fa-solid fa-triangle-exclamation"></i> डेटा लोड करताना त्रुटी आली: ' + (err.message || err) + '</td></tr>';
+        })
+        .getAllBookings();
+    } else {
+      // High-speed Preview Mode Fallback Data
+      allBookingsMasterData = [
+        {
+          bookingId: "GB-2026-0003",
+          bookingDate: "24/08/2026",
+          customerName: "अमित देशपांडे",
+          mobileNumber: "9876543210",
+          emailId: "amit@gmail.com",
+          statueNumber: "M-108",
+          statueImageUrl: "",
+          totalAmount: 18000,
+          advanceAmount: 5000,
+          balanceAmount: 13000,
+          paymentMode: "UPI",
+          bookedByOwner: "शिव",
+          bookingStatus: "BOOKED",
+          pdfBillUrl: "#",
+          finalPaymentDate: "",
+          finalPaymentMode: "",
+          cancellationReason: "",
+          createdTimestamp: "2026-08-24 10:15:00",
+          finalPaymentOwner: "",
+          cancellationOwner: "",
+          cancellationTimestamp: ""
+        },
+        {
+          bookingId: "GB-2026-0002",
+          bookingDate: "23/08/2026",
+          customerName: "सचिन पाटील",
+          mobileNumber: "9158199300",
+          emailId: "-",
+          statueNumber: "St-45",
+          statueImageUrl: "",
+          totalAmount: 25000,
+          advanceAmount: 25000,
+          balanceAmount: 0,
+          paymentMode: "कॅश",
+          bookedByOwner: "राहुल",
+          bookingStatus: "PAID",
+          pdfBillUrl: "#",
+          finalPaymentDate: "24/08/2026",
+          finalPaymentMode: "UPI",
+          cancellationReason: "",
+          createdTimestamp: "2026-08-23 14:20:00",
+          finalPaymentOwner: "हर्षद",
+          cancellationOwner: "",
+          cancellationTimestamp: ""
+        },
+        {
+          bookingId: "GB-2026-0001",
+          bookingDate: "22/08/2026",
+          customerName: "विजय पवार",
+          mobileNumber: "8390001390",
+          emailId: "-",
+          statueNumber: "M-12",
+          statueImageUrl: "",
+          totalAmount: 12000,
+          advanceAmount: 3000,
+          balanceAmount: 9000,
+          paymentMode: "कॅश",
+          bookedByOwner: "हर्षद",
+          bookingStatus: "CANCELLED",
+          pdfBillUrl: "#",
+          finalPaymentDate: "",
+          finalPaymentMode: "",
+          cancellationReason: "ऑर्डर रद्द करण्यात आली",
+          createdTimestamp: "2026-08-22 16:45:00",
+          finalPaymentOwner: "",
+          cancellationOwner: "शिव",
+          cancellationTimestamp: "2026-08-23 11:10:00"
+        }
+      ];
+      applyBookingFilters();
+      renderDashboard();
+    }
+  }
+
+  function safeStr(val) {
+    if (val === null || val === undefined) return '';
+    return String(val).trim().toLowerCase();
+  }
+
+  // Apply Live Filtering with Search Method Selection (Name, Mobile, ID, Statue, Date Range, Owner, Status)
+  function applyBookingFilters() {
+    const btn = document.getElementById('btnFilterSearch');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> शोधा';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> शोधा';
+      }, 200);
+    }
+
+    const searchQ = safeStr(document.getElementById('filterSearchQuery')?.value);
+    const searchMethod = document.getElementById('filterSearchMethod')?.value || 'ALL_FIELDS';
+    const startDateVal = document.getElementById('filterStartDate')?.value || '';
+    const endDateVal = document.getElementById('filterEndDate')?.value || '';
+    const ownerVal = document.getElementById('filterOwner')?.value || 'ALL';
+    const statusVal = document.getElementById('filterStatus')?.value || 'ALL';
+
+    let startDateObj = startDateVal ? new Date(startDateVal) : null;
+    let endDateObj = endDateVal ? new Date(endDateVal) : null;
+
+    if (startDateObj) startDateObj.setHours(0, 0, 0, 0);
+    if (endDateObj) endDateObj.setHours(23, 59, 59, 999);
+
+    const filtered = (allBookingsMasterData || []).filter(b => {
+      if (!b) return false;
+      // 1. Search Method & Query Match
+      if (searchQ) {
+        const name = safeStr(b.customerName);
+        const mob = safeStr(b.mobileNumber);
+        const id = safeStr(b.bookingId);
+        const statue = safeStr(b.statueNumber);
+
+        if (searchMethod === 'NAME') {
+          if (!name.includes(searchQ)) return false;
+        } else if (searchMethod === 'MOBILE') {
+          if (!mob.includes(searchQ)) return false;
+        } else if (searchMethod === 'ID') {
+          if (!id.includes(searchQ)) return false;
+        } else if (searchMethod === 'STATUE') {
+          if (!statue.includes(searchQ)) return false;
+        } else {
+          // ALL_FIELDS
+          if (!name.includes(searchQ) && !mob.includes(searchQ) && !id.includes(searchQ) && !statue.includes(searchQ)) {
+            return false;
+          }
+        }
+      }
+
+      // 2. Owner Filter Match
+      if (ownerVal !== 'ALL' && safeStr(b.bookedByOwner) !== safeStr(ownerVal)) {
+        return false;
+      }
+
+      // 3. Status Filter Match
+      if (statusVal !== 'ALL' && safeStr(b.bookingStatus) !== safeStr(statusVal)) {
+        return false;
+      }
+
+      // 4. Date Range Filter Match
+      if (startDateObj || endDateObj) {
+        const bDateObj = parseBookingDate(b.bookingDate);
+        if (bDateObj) {
+          if (startDateObj && bDateObj < startDateObj) return false;
+          if (endDateObj && bDateObj > endDateObj) return false;
+        }
+      }
+
+      return true;
+    });
+
+    renderBookingsTable(filtered);
+  }
+
+  function parseBookingDate(dateStr) {
+    if (!dateStr) return null;
+    if (typeof dateStr === 'string' && dateStr.includes('/')) {
+      const parts = dateStr.split('/');
+      if (parts.length === 3) {
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+      }
+    }
+    return new Date(dateStr);
+  }
+
+  function validateStatueNumber(input) {
+    if (!input) return true;
+    const val = safeStr(input.value);
+    const errDiv = document.getElementById('statueNumError');
+    if (!val) {
+      if (errDiv) errDiv.style.display = 'none';
+      return true;
+    }
+
+    const existing = (allBookingsMasterData || []).find(b => {
+      const bStatus = safeStr(b.bookingStatus).toUpperCase();
+      return safeStr(b.statueNumber) === val && bStatus !== 'CANCELLED';
+    });
+
+    if (existing) {
+      if (errDiv) {
+        errDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> मूर्ती क्रमांक '${input.value}' ही अगोदरच बुक झालेली आहे (आयडी: ${existing.bookingId}, ग्राहक: ${existing.customerName}).`;
+        errDiv.style.display = 'block';
+      }
+      return false;
+    } else {
+      if (errDiv) errDiv.style.display = 'none';
+      return true;
+    }
+  }
+
+  function formatMobileForWhatsApp(mobileStr) {
+    if (!mobileStr) return "";
+    let clean = String(mobileStr).replace(/[^0-9]/g, '');
+    if (clean.length === 10) {
+      clean = "91" + clean;
+    } else if (clean.length === 11 && clean.startsWith("0")) {
+      clean = "91" + clean.substring(1);
+    }
+    return clean;
+  }
+
+  function shareBookingPdfFile(pdfUrl, pdfBase64, bookingId, customerName, mobileNumber) {
+    const formattedPhone = formatMobileForWhatsApp(mobileNumber);
+    const shareText = 
+      "🚩 *सदिच्छा कला केंद्र - गणपती बाप्पा बुकिंग पावती* 🚩\n\n" +
+      "नमस्कार *" + (customerName || '') + "* जी,\n" +
+      "आपले गणपती बाप्पा बुकिंग यशस्वीरीत्या नोंदवले गेले आहे!\n\n" +
+      "🆔 *बुकिंग क्रमांक:* " + (bookingId || '') + "\n" +
+      "📄 *मराठी बिल PDF डाऊनलोड करा:*\n" + (pdfUrl || '#') + "\n\n" +
+      "📲 *आमच्या सोशल मीडियाला नक्की भेट द्या:*\n" +
+      "▶️ *YouTube:* https://m.youtube.com/@Sadichha_Kala_Kendra\n" +
+      "📷 *Instagram:* https://www.instagram.com/sadichha_kala_kendra?igsh=MXBoaWZ2Zmh4b2p6dA==\n\n" +
+      "🌺 *॥ गणपती बाप्पा मोरया ॥* 🌺";
+
+    const waMsgText = encodeURIComponent(shareText);
+    const targetWaUrl = formattedPhone 
+      ? ("https://api.whatsapp.com/send?phone=" + formattedPhone + "&text=" + waMsgText)
+      : ("https://api.whatsapp.com/send?text=" + waMsgText);
+
+    // Direct WhatsApp targeted chat launch (guaranteed to open specific customer chat)
+    window.open(targetWaUrl, '_blank');
+  }
+
+  let lastCreatedBookingRes = null;
+
+  function shareLastBookingPdf() {
+    if (!lastCreatedBookingRes) return;
+    shareBookingPdfFile(
+      lastCreatedBookingRes.pdfUrl,
+      lastCreatedBookingRes.pdfBase64,
+      lastCreatedBookingRes.bookingId,
+      lastCreatedBookingRes.customerName,
+      lastCreatedBookingRes.mobileNumber
+    );
+  }
+
+  function shareBookingPdfById(bookingId) {
+    const b = (allBookingsMasterData || []).find(x => String(x.bookingId) === String(bookingId));
+    if (!b) return;
+    shareBookingPdfFile(b.pdfBillUrl, '', b.bookingId, b.customerName, b.mobileNumber);
+  }
+
+  function renderBookingsTable(bookingsList) {
+    const tbody = document.getElementById('bookingsTableBody');
+    if (!bookingsList || bookingsList.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; padding:20px; color:#7f8c8d; font-weight:bold;">कोणतेही जुळणारे बुकिंग रेकॉर्ड सापडले नाही.</td></tr>';
+      updateStatsCounters(0, 0, 0);
+      return;
+    }
+
+    let html = '';
+    let activeBookings = 0;
+    let paidCount = 0;
+    let totalPendingBalance = 0;
+
+    bookingsList.forEach((b, idx) => {
+      let badgeClass = 'badge-booked';
+      const status = (b.bookingStatus || '').toUpperCase();
+
+      if (status === 'PAID') {
+        badgeClass = 'badge-paid';
+        paidCount++;
+        activeBookings++;
+      } else if (status === 'CANCELLED') {
+        badgeClass = 'badge-cancelled';
+      } else {
+        // BOOKED
+        activeBookings++;
+      }
+
+      const totalAmt = parseFloat(String(b.totalAmount || 0).replace(/,/g, '')) || 0;
+      const advAmt = parseFloat(String(b.advanceAmount || 0).replace(/,/g, '')) || 0;
+      const balAmt = parseFloat(String(b.balanceAmount || 0).replace(/,/g, '')) || 0;
+
+      if (status !== 'CANCELLED') {
+        totalPendingBalance += balAmt;
+      }
+
+      let pdfCellHtml = '-';
+      if (b.pdfBillUrl && b.pdfBillUrl !== '#') {
+        pdfCellHtml = `<div style="display:flex; flex-direction:column; gap:6px;">
+          <a href="${b.pdfBillUrl}" target="_blank" style="color:var(--primary); font-weight:800; text-decoration:none; font-size:12.5px;"><i class="fa-solid fa-file-pdf"></i> पहा / PDF</a>
+          <button type="button" onclick="shareBookingPdfById('${b.bookingId}')" style="background:#25D366; color:white; border:none; padding:5px 9px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:4px; box-shadow:0 2px 6px rgba(37,211,102,0.25);">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp फाईल
+          </button>
+        </div>`;
+      }
+
+      // Audit Column rendering (Final Payment vs Cancellation details)
+      let auditDetailHtml = '';
+      if (status === 'PAID') {
+        auditDetailHtml = `<div style="font-size:12.5px; color:#1e8449; font-weight:700;"><strong>जमा मालक:</strong> ${b.finalPaymentOwner || b.bookedByOwner || '-'}</div>
+          <div style="font-size:11.5px; color:#5d6d7e;">मोड: ${b.finalPaymentMode || b.paymentMode || '-'} | ${b.finalPaymentDate || '-'}</div>`;
+      } else if (status === 'CANCELLED') {
+        auditDetailHtml = `<div style="font-size:12.5px; color:#922b21; font-weight:700;"><strong>रद्द मालक:</strong> ${b.cancellationOwner || '-'}</div>
+          <div style="font-size:11.5px; color:#5d6d7e;">कारण: ${b.cancellationReason || 'ग्राहकाची विनंती'}</div>
+          <div style="font-size:11px; color:#7f8c8d;">वेळ: ${b.cancellationTimestamp || '-'}</div>`;
+      } else {
+        auditDetailHtml = `<span style="color:#7f8c8d; font-size:12px;">उर्वरित जमा येणे बाकी</span>`;
+      }
+
+      html += `<tr>
+        <td style="text-align:center; font-weight:800; color:#7f8c8d;">${idx + 1}</td>
+        <td><strong>${b.bookingId || '-'}</strong><br><small style="color:#7f8c8d; font-size:11px;">${b.createdTimestamp || ''}</small></td>
+        <td>${b.bookingDate || '-'}</td>
+        <td><strong>${b.customerName || '-'}</strong><br><small style="color:#5d6d7e;"><i class="fa-solid fa-phone"></i> ${b.mobileNumber || '-'}</small></td>
+        <td><strong style="color:var(--primary);">${b.statueNumber || '-'}</strong></td>
+        <td>
+          <div style="font-size:12.5px;">एकूण: ₹${totalAmt.toLocaleString('en-IN')}</div>
+          <div style="font-size:12px; color:#2980b9;">जमा: ₹${advAmt.toLocaleString('en-IN')}</div>
+          <div style="font-size:13px; font-weight:800; color:${balAmt > 0 ? 'var(--danger)' : 'var(--success)'};">बाकी: ₹${balAmt.toLocaleString('en-IN')}</div>
+        </td>
+        <td><strong>${b.bookedByOwner || '-'}</strong><br><small style="color:#7f8c8d;">(${b.paymentMode || '-'})</small></td>
+        <td>${auditDetailHtml}</td>
+        <td><span class="badge ${badgeClass}">${status}</span></td>
+        <td>${pdfCellHtml}</td>
+      </tr>`;
+    });
+
+    tbody.innerHTML = html;
+    updateStatsCounters(activeBookings, paidCount, totalPendingBalance);
+  }
+
+  function updateStatsCounters(total, paid, balance) {
+    document.getElementById('statTotalBookings').innerText = total;
+    document.getElementById('statPaidCount').innerText = paid;
+    document.getElementById('statPendingBalance').innerText = `₹ ${balance.toLocaleString('en-IN')}`;
+  }
+
+  function resetBookingFilters() {
+    if (document.getElementById('filterSearchMethod')) document.getElementById('filterSearchMethod').value = 'ALL_FIELDS';
+    if (document.getElementById('filterSearchQuery')) document.getElementById('filterSearchQuery').value = '';
+    if (document.getElementById('filterStartDate')) document.getElementById('filterStartDate').value = '';
+    if (document.getElementById('filterEndDate')) document.getElementById('filterEndDate').value = '';
+    if (document.getElementById('filterOwner')) document.getElementById('filterOwner').value = 'ALL';
+    if (document.getElementById('filterStatus')) document.getElementById('filterStatus').value = 'ALL';
+    applyBookingFilters();
+  }
+</script>
+</body>
+</html>

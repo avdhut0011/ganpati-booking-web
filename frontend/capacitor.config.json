@@ -1,0 +1,19 @@
+{
+  "appId": "com.sadichha.ganpatibooking",
+  "appName": "सदिच्छा कला केंद्र - गणपती बुकिंग",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "CapacitorSQLite": {
+      "iosIsEncryption": false,
+      "iosKeychainPrefix": "ganpati-booking",
+      "iosBiometric": {
+        "biometricAuth": false,
+        "biometricTitle": "Biometric login for credit card"
+      },
+      "androidIsEncryption": false
+    }
+  }
+}
