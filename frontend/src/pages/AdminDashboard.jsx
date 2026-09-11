@@ -78,6 +78,12 @@ const AdminDashboard = () => {
             <i className="fa-solid fa-gear"></i>
             <span>स्टॉल व मालक सेटिंग्ज</span>
           </div>
+          {role === 'superadmin' && (
+            <div className={`nav-item ${activeMenu === 'stalls' ? 'active' : ''}`} onClick={() => setActiveMenu('stalls')}>
+              <i className="fa-solid fa-store" style={{ color: 'var(--accent-gold)' }}></i>
+              <span>🎪 सर्व स्टॉल्स व्यवस्थापन</span>
+            </div>
+          )}
           <div className={`nav-item ${activeMenu === 'owners' ? 'active' : ''}`} onClick={() => setActiveMenu('owners')}>
             <i className="fa-solid fa-users-gear"></i>
             <span>सह-मालक खाती</span>
@@ -109,6 +115,7 @@ const AdminDashboard = () => {
               {activeMenu === 'analytics' && '📊 व्यवसाय ॲनालिटिक्स व महसूल अहवाल'}
               {activeMenu === 'bookings' && '📋 सर्व बुकिंग्स मॅनेजमेंट (Bookings Manager)'}
               {activeMenu === 'settings' && '⚙️ स्टॉल व मालक प्रोफाइल सेटिंग्ज'}
+              {activeMenu === 'stalls' && '🎪 सर्व स्टॉल्स व्यवस्थापन (Multi-Stall Manager)'}
               {activeMenu === 'owners' && '👥 स्टॉल सह-मालक खाती व अधिकार'}
               {activeMenu === 'export' && '📤 डेटा CSV एक्स्पोर्ट'}
             </h1>
@@ -124,6 +131,7 @@ const AdminDashboard = () => {
         {activeMenu === 'analytics' && <StatsPanel />}
         {activeMenu === 'bookings' && <BookingManager />}
         {activeMenu === 'settings' && <StallOwnerSettings />}
+        {activeMenu === 'stalls' && <StallManager />}
         {activeMenu === 'owners' && <OwnerManager />}
         {activeMenu === 'export' && <ExportPanel />}
 
