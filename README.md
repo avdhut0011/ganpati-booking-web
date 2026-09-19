@@ -5,6 +5,62 @@ A production-grade, enterprise-ready Web & Cloud platform designed specifically 
 
 ---
 
+## 📸 Application Screenshots & Visual Tour
+
+### 1. 🔐 Admin & Stall Owner Login Portal
+Secure authentication supporting Super Admin, Stall Owners, and counter staff with Marathi name recognition.
+![Admin & Owner Login Portal](screenshots/01_login_portal.png)
+
+---
+
+### 2. 📝 Main Counter Booking Screen & Live Financial Calculator
+Fast 3-step booking form with dynamic stall branding, 3 KPI metric cards, statue photo dropzone, and live balance amount calculator.
+![Main Counter Booking Screen](screenshots/02_new_booking.png)
+
+---
+
+### 3. 📊 All Bookings Table & Co-Owner Performance Leaderboard
+High-density data table with customer avatar badges, quick status filters, Cash vs. UPI ratio visualization, and partner collection rankings.
+![All Bookings Table & Leaderboard](screenshots/05_all_bookings_table.png)
+
+---
+
+### 4. 🤖 Gemini 1.5 Flash AI Business Copilot (AI ला विचारा)
+Multilingual AI assistant (Marathi, Minglish, English), financial health score gauge (0–100), and automated WhatsApp debt recovery action plans.
+![AI Business Copilot](screenshots/06_ai_business_copilot.png)
+
+---
+
+### 5. 📈 Revenue Analytics & Collection Breakdown
+Comprehensive business analytics, payment mode distribution, and co-owner collection leaderboard.
+![Business Analytics & Breakdown](screenshots/07_business_analytics.png)
+
+---
+
+### 6. 📋 Full Bookings Management & Audit
+Complete management drawer for inline booking edits, status overrides, and administrative hard-deletions.
+![Full Bookings Management](screenshots/08_all_bookings_management.png)
+
+---
+
+### 7. ⚙️ Stall Branding, Receipt Address & Phone Settings
+Customizable Devanagari receipt branding, official stall number, receipt contact numbers, and workshop address.
+![Stall Settings & Branding](screenshots/09_stall_settings.png)
+
+---
+
+### 8. 🎪 Super Admin Multi-Stall Management (Multi-Tenant)
+Centralized workspace to onboard, manage, and monitor multiple stalls and branches across the platform.
+![Multi-Stall Management](screenshots/10_multi_stall_manager.png)
+
+---
+
+### 9. 👥 Co-Owner Accounts & Role Permissions
+Add, edit, or deactivate stall co-owners, partners, and assign granular permissions per stall.
+![Co-Owner Accounts & Permissions](screenshots/11_owner_management.png)
+
+---
+
 ## 🌟 Key Features & Capabilities
 
 ### 🎪 1. Multi-Stall & Multi-Tenant SaaS Architecture
