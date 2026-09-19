@@ -21,13 +21,13 @@ Fast 3-step booking form with dynamic stall branding, 3 KPI metric cards, statue
 
 ### 3. 📊 All Bookings Table & Co-Owner Performance Leaderboard
 High-density data table with customer avatar badges, quick status filters, Cash vs. UPI ratio visualization, and partner collection rankings.
-![All Bookings Table & Leaderboard](screenshots/05_all_bookings_table.png)
+![All Bookings Table & Leaderboard](screenshots/All_Bookings.png)
 
 ---
 
 ### 4. 🤖 Gemini 1.5 Flash AI Business Copilot (AI ला विचारा)
 Multilingual AI assistant (Marathi, Minglish, English), financial health score gauge (0–100), and automated WhatsApp debt recovery action plans.
-![AI Business Copilot](screenshots/06_ai_business_copilot.png)
+![AI Business Copilot](screenshots/AI_Buisness_Analysis.png)
 
 ---
 
